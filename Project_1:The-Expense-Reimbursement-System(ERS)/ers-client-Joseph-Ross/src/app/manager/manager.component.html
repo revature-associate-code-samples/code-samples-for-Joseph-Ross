@@ -1,0 +1,34 @@
+<div id="manager-component" class="container">
+
+  <button (click)="logout()" class = "btn btn-info" id = "logout-btn">Logout</button>
+  <div id="manager-descision-form">
+    <h2 class = "manager-descision-box-header">Approve or Deny</h2>
+    <hr>
+    <form>
+      <div class = "form-group">
+        <label>Reimbursement Id: </label>
+        <label id = "reimb-id-display" class="form-control" type = "text" style="display:inline;">-</label>
+        <button id = "approve-btn" (click)="approve()" type="submit" class="btn btn-success choice-button" disabled>Approve</button>
+        <button id = "deny-btn" (click)="deny()" type="submit" class="btn btn-danger choice-button" disabled>Deny</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="reimb-table-container">
+    <button (click)="rerender()" id="refresh-button" class = "btn btn-primary">Refresh List</button>
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped table-bordered display" id = "reimb-table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Amount</th>
+          <th>Submitted</th>
+          <th>Description</th>
+          <th>User Id</th>
+          <th>Status</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>

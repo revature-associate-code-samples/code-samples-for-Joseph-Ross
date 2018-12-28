@@ -1,0 +1,56 @@
+#manager-descision-form {
+    min-width: 500px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 15px;
+    background-color: #e1f5fe;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+#manager-descision-form form {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#logout-btn {
+    width: 100%;
+
+    margin-top: 50px;
+}
+
+#reimb-table-container {
+    min-width: 500px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 30px;
+    background-color: #e1f5fe;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+.manager-descision-box-header {
+    text-align: center;
+}
+
+#reimb-id-display {
+    margin-left: 5px;
+    width: 60px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.choice-button {
+    width: 200px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+#refresh-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
