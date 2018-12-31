@@ -1,0 +1,110 @@
+<div class = "container-fluid">
+
+  <div class = "row">
+
+    <!-- User List Area -->
+    <div class = "col-sm-8 col-md-8">
+      <div class = "player-list-label-container">
+        <h1 class = "player-list-label">Lobby Name: <span class = "lobby-name">{{gameName}}</span></h1>
+      </div>
+      <hr style="border:1px solid #7070db">
+      <div class = "container-fluid player-box">
+        <div class = "row">
+          <div *ngFor="let user of users" class = "col-sm-3 col-md-3">
+            <div *ngIf="user['playerId'] !== userId" class = "user-div">
+              <span>{{user['username']}}</span>
+            </div>
+            <div *ngIf="user['playerId'] === userId" class = "current-user-div">
+                <span>{{user['username']}}</span>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit button/Global Chat -->
+    <div class = "col-sm-8 col-md-4">
+
+      <div class = "ready-button-holder">
+        <button *ngIf="globals.getIsLeader()" class = "btn btn-success" (click)="startGame()">
+          Ready
+        </button>
+      </div>
+      <br>
+
+      <form>
+          <div class="form-group">
+            <label class = "info-label">Quiz Category:</label>
+            <input  value={{gameCategory}} disabled type="text" class="form-control" id="category-box">
+          </div>
+          <div class="form-group">
+            <label class = "info-label"># Questions:</label>
+            <input value={{gameNumberOfQuestion}} disabled type="text" class="form-control" id="question-number-box">
+          </div>
+          <div class="form-group">
+            <label class = "info-label"># Game Key:</label>
+            <input value={{gameKey}} disabled type="text" class="form-control" id="game-key-number-box">
+          </div>
+          <div class="form-group">
+            <label class = "info-label"># Scope:</label>
+            <input value={{scope}} disabled type="text" class="form-control" id="scope-box">
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="chatcontainer" style = "margin-left: auto; margin-right: auto; float: right;">
+    <div class="panel panel-primary">
+        <div class="panel-heading" id="accordion" style="background: #e98c01;">
+            <span class="glyphicon glyphicon-comment"></span> Chat
+            <div class="btn-group pull-right">
+                <a type="button" class="btn btn-default btn-xs" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                    <span class="glyphicon glyphicon-chevron-up"></span>
+                </a>
+            </div>
+        </div>
+    <div class="panel-collapse collapse" id="collapseOne">
+        <div class="panel-body panel-body-extra">
+            <ul class="chat">
+                <ng-template ngFor let-chat [ngForOf]="chats">
+                    <li *ngIf="chat.id !== userId" class="left clearfix">
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <small class=" text-muted">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                    {{chat.time}}
+                                </small>
+                            </div>
+                            <p>
+                                <strong>{{chat.username}}</strong>: {{chat.message}}
+                            </p>
+                        </div>
+                    </li>
+                    <li *ngIf="chat.id === userId" class="right clearfix">
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <small class=" text-muted">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                    {{chat.time}}
+                                </small>
+                            </div>
+                            <p>
+                                <strong>You</strong>: {{chat.message}}
+                            </p>
+                        </div>
+                    </li>
+                </ng-template>
+            </ul>
+        </div>
+        <div class="panel-footer">
+            <div class="input-group">
+                <input id="message_input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                <span class="input-group-btn">
+                    <button class="btn btn-warning btn-sm" id="btn-chat" (click)="sendMessage()" >
+                        Send</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
